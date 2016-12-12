@@ -7,7 +7,38 @@
  */
 
 /** WordPress Administration Bootstrap */
-require_once( './admin.php' );
+require_once( dirname( __FILE__ ) . '/admin.php' );
+
+if ( ! wp_is_mobile() ) {
+	wp_enqueue_style( 'wp-mediaelement' );
+	wp_enqueue_script( 'wp-mediaelement' );
+	wp_localize_script( 'mediaelement', '_wpmejsSettings', array(
+		'pluginPath'        => includes_url( 'js/mediaelement/', 'relative' ),
+		'pauseOtherPlayers' => '',
+	) );
+}
+
+/**
+ * Replaces the height and width attributes with values for full size.
+ *
+ * wp_video_shortcode() limits the width to 640px.
+ *
+ * @since 4.6.0
+ * @ignore
+ *
+ * @param $output Video shortcode HTML output.
+ * @return string Filtered HTML content to display video.
+ */
+function _wp_override_admin_video_width_limit( $output ) {
+	return str_replace( array( '640', '384' ), array( '1050', '630' ), $output );
+}
+
+$video_url = 'https://videopress.com/embed/GbdhpGF3?hd=true';
+$locale    = str_replace( '_', '-', get_locale() );
+list( $locale ) = explode( '-', $locale );
+if ( 'en' !== $locale ) {
+	$video_url = add_query_arg( 'defaultLangCode', $locale, $video_url );
+}
 
 $title = __( 'About' );
 
@@ -15,142 +46,174 @@ list( $display_version ) = explode( '-', $wp_version );
 
 include( ABSPATH . 'wp-admin/admin-header.php' );
 ?>
-<div class="wrap about-wrap">
+	<div class="wrap about-wrap">
+		<h1><?php printf( __( 'Welcome to WordPress&nbsp;%s' ), $display_version ); ?></h1>
 
-<h1><?php printf( __( 'Welcome to WordPress %s' ), $display_version ); ?></h1>
+		<p class="about-text"><?php printf( __( 'Thank you for updating to the latest version. WordPress %s changes a lot behind the scenes to make your WordPress experience even better!' ), $display_version ); ?></p>
+		<div class="wp-badge"><?php printf( __( 'Version %s' ), $display_version ); ?></div>
 
-<div class="about-text"><?php printf( __( 'Thank you for updating to the latest version. WordPress %s makes your writing experience even better.' ), $display_version ); ?></div>
+		<h2 class="nav-tab-wrapper wp-clearfix">
+			<a href="about.php" class="nav-tab nav-tab-active"><?php _e( 'What&#8217;s New' ); ?></a>
+			<a href="credits.php" class="nav-tab"><?php _e( 'Credits' ); ?></a>
+			<a href="freedoms.php" class="nav-tab"><?php _e( 'Freedoms' ); ?></a>
+		</h2>
 
-<div class="wp-badge"><?php printf( __( 'Version %s' ), $display_version ); ?></div>
+		<div class="changelog point-releases">
+			<h3><?php _e( 'Maintenance and Security Release' ); ?></h3>
+			<p><?php printf( _n( '<strong>Version %1$s</strong> addressed some security issues and fixed %2$s bug.',
+				'<strong>Version %1$s</strong> addressed some security issues and fixed %2$s bugs.', 15 ), '4.6.1', number_format_i18n( 15 ) ); ?>
+				<?php printf( __( 'For more information, see <a href="%s">the release notes</a>.' ), 'https://codex.wordpress.org/Version_4.6.1' ); ?>
+			</p>
+		</div>
 
-<h2 class="nav-tab-wrapper">
-	<a href="about.php" class="nav-tab nav-tab-active">
-		<?php _e( 'What&#8217;s New' ); ?>
-	</a><a href="credits.php" class="nav-tab">
-		<?php _e( 'Credits' ); ?>
-	</a><a href="freedoms.php" class="nav-tab">
-		<?php _e( 'Freedoms' ); ?>
-	</a>
-</h2>
+		<div class="headline-feature feature-video">
+			<iframe width="1050" height="591" src="<?php echo esc_url( $video_url ); ?>" frameborder="0" allowfullscreen></iframe>
+			<script src="https://videopress.com/videopress-iframe.js"></script>
+		</div>
 
-<div class="changelog point-releases">
-	<h3><?php echo _n( 'Maintenance and Security Release', 'Maintenance and Security Releases', 1 ); ?></h3>
-	<p><?php printf( _n( '<strong>Version %1$s</strong> addressed some security issues and fixed %2$s bug.',
-         '<strong>Version %1$s</strong> addressed some security issues and fixed %2$s bugs.', 13 ), '3.6.1', number_format_i18n( 13 ) ); ?>
-		<?php printf( __( 'For more information, see <a href="%s">the release notes</a>.' ), 'http://codex.wordpress.org/Version_3.6.1' ); ?>
- 	</p>
-</div>
+		<hr>
 
-<div class="changelog">
-	<h3><?php _e( 'Colorful New Theme' ); ?></h3>
+		<div class="streamlined-updates feature-section one-col">
+			<h2><?php _e( 'Streamlined Updates' ); ?></h2>
+			<p><?php _e( 'Don&#8217;t lose your place: stay on the same page while you update, install, and delete your plugins and themes.' ); ?></p>
+			<?php
+			if ( ! wp_is_mobile() ) {
+				add_filter( 'wp_video_shortcode', '_wp_override_admin_video_width_limit' );
+				echo wp_video_shortcode( array(
+					'mp4'      => 'https://s.w.org/images/core/4.6/streamlined-updates.mp4',
+					'webm'     => 'https://s.w.org/images/core/4.6/streamlined-updates.webm',
+					'poster'   => 'https://s.w.org/images/core/4.6/streamlined-updates-2000.png?v1',
+					'loop'     => true,
+					'autoplay' => true,
+					'width'    => 1050,
+					'height'   => 630,
+					'class'    => 'wp-video-shortcode feature-video',
+				) );
+				remove_filter( 'wp_video_shortcode', '_wp_override_admin_video_width_limit' );
+			} else {
+				echo '<img src="https://s.w.org/images/core/4.6/streamlined-updates-1057.png?v1" alt="" srcset="https://s.w.org/images/core/4.6/streamlined-updates-1664.png?v1 1664w, https://s.w.org/images/core/4.6/streamlined-updates-200.png?v1 200w, https://s.w.org/images/core/4.6/streamlined-updates-1057.png?v1 1057w, https://s.w.org/images/core/4.6/streamlined-updates-2000.png?v1 2000w"  sizes="(max-width: 500px) calc(100vw - 40px), (max-width: 782px) calc(100vw - 70px), (max-width: 959px) calc(100vw - 116px), (max-width: 1290px) calc(100vw - 240px), 1050px" />';
+			}
+			?>
+		</div>
 
-	<div class="feature-section images-stagger-right">
-		<img alt="" src="<?php echo is_ssl() ? 'https://' : '//s.'; ?>wordpress.org/images/core/3.6/twentythirteen.png" class="image-66" />
-		<h4><?php _e( 'Introducing Twenty Thirteen' ); ?></h4>
-		<p><?php printf( __( "The new default theme puts focus on your content with a colorful, single-column design made for media-rich blogging." ) ); ?></p>
-		<p><?php _e( 'Inspired by modern art, Twenty Thirteen features quirky details, beautiful typography, and bold, high-contrast colors &mdash; all with a flexible layout that looks great on any device, big or small.' ); ?></p>
+		<hr />
+
+		<div class="native-fonts feature-section one-col">
+			<h2><?php _e( 'Native Fonts' ); ?></h2>
+			<p><?php _e( 'The WordPress dashboard now takes advantage of the fonts you already have, making it load faster and letting you feel more at home on whatever device you use.' ); ?></p>
+			<img src="https://s.w.org/images/core/4.6/native-fonts-992.png?v1" alt="" srcset="https://cldup.com/Hqmo5VLb-E.png?v1 922w, https://s.w.org/images/core/4.6/native-fonts-200.png?v1 200w,https://s.w.org/images/core/4.6/native-fonts-371.png?v1 371w,https://s.w.org/images/core/4.6/native-fonts-510.png?v1 510w, https://s.w.org/images/core/4.6/native-fonts-560.png?v1 560w, https://s.w.org/images/core/4.6/native-fonts-781.png?v1 781w, https://s.w.org/images/core/4.6/native-fonts-2000.png?v1 2000w" sizes="(max-width: 500px) calc(100vw - 40px), (max-width: 782px) calc(100vw - 70px), (max-width: 959px) calc(100vw - 116px), (max-width: 1290px) calc(100vw - 240px), 1050px"/>
+		</div>
+
+		<hr />
+
+		<div class="feature-section two-col">
+			<h2><?php _e( 'Editor Improvements' ); ?></h2>
+			<div class="col">
+				<img src="https://s.w.org/images/core/4.6/inline-link-checker-608.png?v1" alt="" srcset="https://s.w.org/images/core/4.6/inline-link-checker-789.png?v1 789w, https://s.w.org/images/core/4.6/inline-link-checker-200.png?v1 200w, https://s.w.org/images/core/4.6/inline-link-checker-384.png?v1 384w, https://s.w.org/images/core/4.6/inline-link-checker-608.png?v1 608w, https://s.w.org/images/core/4.6/inline-link-checker-992.png?v1 992w" sizes="(max-width: 500px) calc(100vw - 40px), (max-width: 781px) calc((100vw - 70px) * .466), (max-width: 959px) calc((100vw - 116px) * .469), (max-width: 1290px) calc((100vw - 240px) * .472), 496px"/>
+				<h3><?php _e( 'Inline Link Checker' ); ?></h3>
+				<p><?php
+					printf(
+						/* translators: %s: Home URL appended with 'wordpress.org'  */
+						__( 'Ever accidentally made a link to %s? Now WordPress automatically checks to make sure you didn&#8217;t.' ),
+						home_url( 'wordpress.org' )
+					);
+				?></p>
+			</div>
+			<div class="col">
+				<img src="https://s.w.org/images/core/4.6/content-recovery-561.png?v1" alt="" srcset="https://s.w.org/images/core/4.6/content-recovery-701.png?v1 701w, https://s.w.org/images/core/4.6/content-recovery-200.png?v1 200w, https://s.w.org/images/core/4.6/content-recovery-400.png?v1 400w, https://s.w.org/images/core/4.6/content-recovery-561.png?v1 561w, https://s.w.org/images/core/4.6/content-recovery-992.png?v1 992w" sizes="(max-width: 500px) calc(100vw - 40px), (max-width: 781px) calc((100vw - 70px) * .466), (max-width: 959px) calc((100vw - 116px) * .469), (max-width: 1290px) calc((100vw - 240px) * .472), 496px"/>
+				<h3><?php _e( 'Content Recovery' ); ?></h3>
+				<p><?php _e( 'As you type, WordPress saves your content to the browser. Recovering saved content is even easier with WordPress 4.6.' ); ?></p>
+			</div>
+		</div>
+
+		<hr />
+
+		<div class="changelog">
+			<h2><?php _e( 'Under the Hood' ); ?></h2>
+
+			<div class="under-the-hood three-col">
+				<div class="col">
+					<h3><?php _e( 'Resource Hints' ); ?></h3>
+					<p><?php
+						printf(
+							/* translators: %s: https://make.wordpress.org/core/2016/07/06/resource-hints-in-4-6/ */
+							__( '<a href="%s">Resource hints help browsers</a> decide which resources to fetch and preprocess. WordPress 4.6 adds them automatically for your styles and scripts making your site even faster.' ),
+							'https://make.wordpress.org/core/2016/07/06/resource-hints-in-4-6/'
+						);
+					?></p>
+				</div>
+				<div class="col">
+					<h3><?php _e( 'Robust Requests' ); ?></h3>
+					<p><?php _e( 'The HTTP API now leverages the Requests library, improving HTTP standard support and adding case-insensitive headers, parallel HTTP requests, and support for Internationalized Domain Names.' ); ?></p>
+				</div>
+				<div class="col">
+					<h3><?php
+						/* translators: 1: WP_Term_Query, 2: WP_Post_Type */
+						printf( __( '%1$s and %2$s' ), '<code>WP_Term_Query</code>', '<code>WP_Post_Type</code>' );
+					?></h3>
+					<p><?php
+						printf(
+							/* translators: 1: WP_Term_Query, 2: WP_Post_Type */
+							__( 'A new %1$s class adds flexibility to query term information while a new %2$s object makes interacting with post types more predictable.' ),
+							'<code>WP_Term_Query</code>',
+							'<code>WP_Post_Type</code>'
+						);
+					?></p>
+				</div>
+			</div>
+
+			<div class="under-the-hood three-col">
+				<div class="col">
+					<h3><?php _e( 'Meta Registration API' ); ?></h3>
+					<p><?php
+						printf(
+							/* translators: %s: https://make.wordpress.org/core/2016/07/08/enhancing-register_meta-in-4-6/  */
+							__( 'The Meta Registration API <a href="%s">has been expanded</a> to support types, descriptions, and REST API visibility.' ),
+							'https://make.wordpress.org/core/2016/07/08/enhancing-register_meta-in-4-6/'
+						);
+					?></p>
+				</div>
+				<div class="col">
+					<h3><?php _e( 'Translations On Demand' ); ?></h3>
+					<p><?php _e( 'WordPress will install and use the newest language packs for your plugins and themes as soon as they&#8217;re available from <a href="https://translate.wordpress.org/">WordPress.org&#8217;s community of translators</a>.' ); ?></p>
+				</div>
+				<div class="col">
+					<h3><?php _e( 'JavaScript Library Updates' ); ?></h3>
+					<p><?php _e( 'Masonry 3.3.2, imagesLoaded 3.2.0, MediaElement.js 2.22.0, TinyMCE 4.4.1, and Backbone.js 1.3.3 are bundled.' ); ?></p>
+				</div>
+			</div>
+
+			<div class="under-the-hood two-col">
+				<div class="col">
+					<h3><?php _e( 'Customizer APIs for Setting Validation and Notifications' ); ?></h3>
+					<p><?php _e( 'Settings now have an <a href="https://make.wordpress.org/core/2016/07/05/customizer-apis-in-4-6-for-setting-validation-and-notifications/">API for enforcing validation constraints</a>. Likewise, customizer controls now support notifications, which are used to display validation errors instead of failing silently.' ); ?></p>
+				</div>
+				<div class="col">
+					<h3><?php _e( 'Multisite, now faster than ever' ); ?></h3>
+					<p><?php
+						printf(
+							/* translators: 1: WP_Site_Query, 2: WP_Network_Query */
+							__( 'Cached and comprehensive site queries improve your network admin experience. The addition of %1$s and %2$s help craft advanced queries with less effort.' ),
+							'<code>WP_Site_Query</code>',
+							'<code>WP_Network_Query</code>'
+						);
+					?></p>
+				</div>
+			</div>
+		</div>
+
+		<hr />
+
+		<div class="return-to-dashboard">
+			<?php if ( current_user_can( 'update_core' ) && isset( $_GET['updated'] ) ) : ?>
+				<a href="<?php echo esc_url( self_admin_url( 'update-core.php' ) ); ?>">
+					<?php is_multisite() ? _e( 'Return to Updates' ) : _e( 'Return to Dashboard &rarr; Updates' ); ?>
+				</a> |
+			<?php endif; ?>
+			<a href="<?php echo esc_url( self_admin_url() ); ?>"><?php is_blog_admin() ? _e( 'Go to Dashboard &rarr; Home' ) : _e( 'Go to Dashboard' ); ?></a>
+		</div>
+
 	</div>
-</div>
-
-<div class="changelog">
-	<h3><?php _e( 'Write with Confidence' ); ?></h3>
-
-	<div class="feature-section images-stagger-right">
-		<img alt="" src="<?php echo is_ssl() ? 'https://' : '//s.'; ?>wordpress.org/images/core/3.6/revisions.png" class="image-66" />
-		<h4><?php _e( 'Explore Revisions' ); ?></h4>
-		<p></p>
-		<p><?php _e( 'From the first word you write, WordPress saves every change. Each revision is always at your fingertips. Text is highlighted as you scroll through revisions at lightning speed, so you can see what changes have been made along the way.' ); ?></p>
-		<p><?php _e( 'It&#8217;s easy to compare two revisions from any point in time, and to restore a revision and go back to writing. Now you can be confident that no mistake is permanent.' ); ?></p>
-	</div>
-
-	<div class="feature-section col two-col">
-		<div>
-			<h4><?php _e( 'Improved Autosaves' ); ?></h4>
-			<p><?php _e( 'Never lose a word you&#8217;ve written. Autosaving is now even better; whether your power goes out, your browser crashes, or you lose your internet connection, your content is safe.' ); ?></p>
-		</div>
-		<div class="last-feature">
-			<h4><?php _e( 'Better Post Locking' ); ?></h4>
-			<p><?php _e( 'Always know who&#8217;s editing with live updates that appear in the list of posts. And if someone leaves for lunch with a post open, you can take over where they left off.' ); ?></p>
-		</div>
-	</div>
-</div>
-
-<div class="changelog">
-	<h3><?php _e( 'Support for Audio and Video' ); ?></h3>
-
-	<div class="feature-section images-stagger-right">
-		<div class="video image-66"><?php
-			$sample_video = ( is_ssl() ? 'https://' : 'http://s.' ) . 'wordpress.org/images/core/3.6/sample-video';
-			$args = array(
-				'mp4' => "$sample_video.mp4",
-				'ogv' => "$sample_video.ogv",
-				'width' => 625,
-				'height' => 360,
-			);
-			// Opera 12 (Presto, pre-Chromium) fails to load ogv properly
-			// when combined with ME.js. Works fine in Opera 15.
-			// Don't serve ogv to Opera 12 to avoid complete brokeness.
-			if ( $GLOBALS['is_opera'] )
-				unset( $args['ogv'] );
-			// Our current ME.js API is limited to shortcodes in posts.
-			echo wp_video_shortcode( $args );
-		?></div>
-		<h4><?php _e( 'New Media Player' ); ?></h4>
-		<p><?php _e( 'Share your audio and video with the new built-in HTML5 media player. Upload files using the media manager and embed them in your posts.' ); ?></p>
-
-		<h4><?php _e( 'Embed Music from Spotify, Rdio, and SoundCloud' ); ?></h4>
-		<p><?php _e( 'Embed songs and albums from your favorite artists, or playlists you&#8217;ve mixed yourself. It&#8217;s as simple as pasting a URL into a post on its own line.' ); ?></p>
-		<p><?php printf( __( '(Love another service? Check out all of the <a href="%s">embeds</a> that WordPress supports.)' ), 'http://codex.wordpress.org/Embeds' ); ?></p>
-	</div>
-</div>
-
-<div class="changelog">
-	<h3><?php _e( 'Under the Hood' ); ?></h3>
-
-	<div class="feature-section col three-col">
-		<div>
-			<h4><?php _e( 'Audio/Video API' ); ?></h4>
-			<p><?php _e( 'The new audio/video APIs give developers access to powerful media metadata, like ID3 tags.' ); ?></p>
-		</div>
-		<div>
-			<h4><?php _e( 'Semantic Markup' ); ?></h4>
-			<p><?php _e( 'Themes can now choose improved HTML5 markup for comment forms, search forms, and comment lists.' ); ?></p>
-		</div>
-		<div class="last-feature">
-			<h4><?php _e( 'JavaScript Utilities' ); ?></h4>
-			<p><?php _e( 'Handy JavaScript utilities ease common tasks like Ajax requests, templating, and Backbone view management.' ); ?></p>
-		</div>
-	</div>
-
-	<div class="feature-section col three-col">
-		<div>
-			<h4><?php _e( 'Shortcode Improvements' ); ?></h4>
-			<p><?php _e( 'Search content for shortcodes with <code>has_shortcode()</code> and adjust shortcode attributes with a new filter.' ); ?></p>
-		</div>
-		<div>
-			<h4><?php _e( 'Revision Control' ); ?></h4>
-			<p><?php _e( 'Fine-grained revision controls allow you to keep a different number of revisions for each post type.' ); ?></p>
-		</div>
-		<div class="last-feature">
-			<h4><?php _e( 'External Libraries' ); ?></h4>
-			<p><?php
-				/* translators: placeholders 2, 3 and 4 are version numbers */
-				printf( __( 'New and updated libraries: <a href="%1$s">MediaElement.js</a>, jQuery %2$s, jQuery UI %3$s, jQuery Migrate, Backbone %4$s.' ), 'http://mediaelementjs.com/', '1.10.2', '1.10.3', '1.0' ); ?></p>
-		</div>
-	</div>
-</div>
-
-<div class="return-to-dashboard">
-	<?php if ( current_user_can( 'update_core' ) && isset( $_GET['updated'] ) ) : ?>
-	<a href="<?php echo esc_url( self_admin_url( 'update-core.php' ) ); ?>"><?php
-		is_multisite() ? _e( 'Return to Updates' ) : _e( 'Return to Dashboard &rarr; Updates' );
-	?></a> |
-	<?php endif; ?>
-	<a href="<?php echo esc_url( self_admin_url() ); ?>"><?php
-		is_blog_admin() ? _e( 'Go to Dashboard &rarr; Home' ) : _e( 'Go to Dashboard' ); ?></a>
-</div>
-
-</div>
 <?php
 
 include( ABSPATH . 'wp-admin/admin-footer.php' );
@@ -158,13 +221,19 @@ include( ABSPATH . 'wp-admin/admin-footer.php' );
 // These are strings we may use to describe maintenance/security releases, where we aim for no new strings.
 return;
 
-_n_noop( 'Maintenance Release', 'Maintenance Releases' );
-_n_noop( 'Security Release', 'Security Releases' );
-_n_noop( 'Maintenance and Security Release', 'Maintenance and Security Releases' );
+__( 'Maintenance Release' );
+__( 'Maintenance Releases' );
 
-/* translators: 1: WordPress version number. */
-_n_noop( '<strong>Version %1$s</strong> addressed a security issue.',
-         '<strong>Version %1$s</strong> addressed some security issues.' );
+__( 'Security Release' );
+__( 'Security Releases' );
+
+__( 'Maintenance and Security Release' );
+__( 'Maintenance and Security Releases' );
+
+/* translators: %s: WordPress version number */
+__( '<strong>Version %s</strong> addressed one security issue.' );
+/* translators: %s: WordPress version number */
+__( '<strong>Version %s</strong> addressed some security issues.' );
 
 /* translators: 1: WordPress version number, 2: plural number of bugs. */
 _n_noop( '<strong>Version %1$s</strong> addressed %2$s bug.',
@@ -178,4 +247,5 @@ _n_noop( '<strong>Version %1$s</strong> addressed a security issue and fixed %2$
 _n_noop( '<strong>Version %1$s</strong> addressed some security issues and fixed %2$s bug.',
          '<strong>Version %1$s</strong> addressed some security issues and fixed %2$s bugs.' );
 
+/* translators: %s: Codex URL */
 __( 'For more information, see <a href="%s">the release notes</a>.' );
