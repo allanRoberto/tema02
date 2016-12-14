@@ -1,0 +1,71 @@
+/* Logotipo Seguradoras */
+.text-phones h2 {
+	font-size: 25px;
+    text-transform: uppercase;
+    font-weight: 900;
+    color: #2C3E50;
+}
+
+.text-phones h4 {
+    font-size: 17px;
+    color: #43B658;
+    font-weight: 300;
+    text-transform: uppercase;
+}
+
+.text-phones p {
+	font-size : 28px;
+}
+
+.text-phones h3 {
+    font-size: 13px;
+    text-transform: uppercase;
+    color: #666666;
+    font-weight: 900; 
+}
+
+.text-seguradora h1{
+  text-transform : uppercase;
+  font-size : 35px;
+  font-weight : 900;
+}
+
+
+.text-seguradora h1:after {
+	content : " ";
+	width : 50%;
+	height : 3px;
+	display: block;
+	position : relative;
+	margin-top : 10px;
+	margin-bottom : 10px;
+	background : #ededed;
+}
+
+.text-seguradora p {
+	line-height : 20px;
+	font-weight : 300;
+}
+
+.text-seguradora h3 {
+	font-weight: 900;
+    text-transform: uppercase;
+    background: #2C3E50;
+    color: #fff;
+    display: table;
+    padding: 5px 10px !important;
+    font-size: 15px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.text-seguradora h3:after {
+	content : " ";
+	width : 100%;
+	height : 3px;
+	display: block;
+	position : relative;
+    background-color: #43B658;
+    top: 8px;
+    left: 10px;
+}
