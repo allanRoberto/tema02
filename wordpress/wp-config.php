@@ -72,7 +72,7 @@ define('NONCE_SALT',       'put your unique phrase here');
  * prefix. Only numbers, letters, and underscores please!
  */
 
-$table_prefix  = '3sd67fuvk_';
+$table_prefix  = 'wp_';
 
 /**
  * WordPress Localized Language, defaults to English.
