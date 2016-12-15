@@ -203,7 +203,7 @@
 				</div>
 				<div class="et-hours">
 					<h4>Horário de atendimento</h4>
-					<p>Seg. a Sex. 9:00 às 18:00 <br>(Horário de Brasília)</p>
+					<p>Seg. a Sex. 8h30 às 17h30 <br>(Horário de Brasília)</p>
 				</div>
 				<div id="et-info">
 				<?php if ( '' !== ( $et_phone_number = et_get_option( 'phone_number' ) ) ) : ?>
