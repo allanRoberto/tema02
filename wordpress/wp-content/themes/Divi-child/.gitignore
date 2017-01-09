@@ -33,5 +33,3 @@ node_modules
 
 # Dev Purpose
 *.html
-*.css
-*.map

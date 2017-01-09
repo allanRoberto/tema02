@@ -139,6 +139,13 @@
 #top-menu-nav {
   width: 100%;
 }
+#top-menu-nav #top-menu li li {
+  margin: 0;
+  padding: 20px;
+  width: auto !important;
+  padding-right: 20px !important;
+  border-right: 0px !important;
+}
 #top-menu-nav #top-menu {
   width: 100%;
 }
@@ -160,6 +167,9 @@
   font-weight: 800;
   color: #fff;
   text-transform: uppercase;
+}
+#top-menu-nav #top-menu li.mega-menu ul li {
+  width: 25% !important;
 }
 
 /* Vertical Navigation */

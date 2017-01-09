@@ -180,6 +180,13 @@
 
 #top-menu-nav {
   width: 100%;
+  #top-menu li li {
+    margin: 0;
+    padding: 20px;
+    width: auto !important;
+    padding-right: 20px !important;
+    border-right: 0px !important;
+  }
   #top-menu {
     width: 100%;
     li:first-child {
@@ -200,7 +207,7 @@
         color : #fff;
         text-transform : uppercase;
       }
-
+  
       // Dropdown Menu
       &.menu-item-has-children {
         > a {}
@@ -222,6 +229,7 @@
 
         ul {
           li {
+            width : 25% !important;
             ul {
               li {
                 a {}
