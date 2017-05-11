@@ -23,7 +23,8 @@
 #et-info h4 {
   font-family : "Roboto", sans-serif;
   font-size : 13px;
-  padding-bottom : 0px !important;
+   padding-top : 4px !important;
+  padding-bottom : 4px !important;
   color : #fff;
 }
 
@@ -37,12 +38,28 @@
 }
 .et-call {
   float: right;
-  background: #969696;
-  padding: 20px 30px 20px 50px;
+  background: #69AB24;
+  padding: 10px 10px 5px 55px;
   margin-top : 9px;
 }
 
-.et-call h4:before {
+.et-call p {
+   line-height: 20px;
+    font-size: 19px;
+    color: #fff;
+    font-weight: 900;
+}
+
+.et-call p strong {
+  font-weight : 300;
+  font-size : 13px;
+}
+
+.et-call p a {
+  color: #000 !important;
+}
+
+.et-call:before {
   content : "";
   max-width: 256px;
   max-height: 256px;
@@ -52,32 +69,26 @@
     height: 32px;
     display: block;
     position: absolute;
-    margin-left: -40px;
-    margin-top: -10px;
+        margin-left: -44px;
+    margin-top: 20px;
 }
 
-.et-call h4:after {
-  content : "";
-  max-width: 256px;
-  max-height: 256px;
-  background-image: url(data:image/svg+xml;utf8;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iaXNvLTg4NTktMSI/Pgo8IS0tIEdlbmVyYXRvcjogQWRvYmUgSWxsdXN0cmF0b3IgMTYuMC4wLCBTVkcgRXhwb3J0IFBsdWctSW4gLiBTVkcgVmVyc2lvbjogNi4wMCBCdWlsZCAwKSAgLS0+CjwhRE9DVFlQRSBzdmcgUFVCTElDICItLy9XM0MvL0RURCBTVkcgMS4xLy9FTiIgImh0dHA6Ly93d3cudzMub3JnL0dyYXBoaWNzL1NWRy8xLjEvRFREL3N2ZzExLmR0ZCI+CjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgdmVyc2lvbj0iMS4xIiBpZD0iQ2FwYV8xIiB4PSIwcHgiIHk9IjBweCIgd2lkdGg9IjI1NnB4IiBoZWlnaHQ9IjI1NnB4IiB2aWV3Qm94PSIwIDAgNDUxLjg0NyA0NTEuODQ3IiBzdHlsZT0iZW5hYmxlLWJhY2tncm91bmQ6bmV3IDAgMCA0NTEuODQ3IDQ1MS44NDc7IiB4bWw6c3BhY2U9InByZXNlcnZlIj4KPGc+Cgk8cGF0aCBkPSJNMjI1LjkyMywzNTQuNzA2Yy04LjA5OCwwLTE2LjE5NS0zLjA5Mi0yMi4zNjktOS4yNjNMOS4yNywxNTEuMTU3Yy0xMi4zNTktMTIuMzU5LTEyLjM1OS0zMi4zOTcsMC00NC43NTEgICBjMTIuMzU0LTEyLjM1NCwzMi4zODgtMTIuMzU0LDQ0Ljc0OCwwbDE3MS45MDUsMTcxLjkxNWwxNzEuOTA2LTE3MS45MDljMTIuMzU5LTEyLjM1NCwzMi4zOTEtMTIuMzU0LDQ0Ljc0NCwwICAgYzEyLjM2NSwxMi4zNTQsMTIuMzY1LDMyLjM5MiwwLDQ0Ljc1MUwyNDguMjkyLDM0NS40NDlDMjQyLjExNSwzNTEuNjIxLDIzNC4wMTgsMzU0LjcwNiwyMjUuOTIzLDM1NC43MDZ6IiBmaWxsPSIjRkZGRkZGIi8+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPC9zdmc+Cg==);
-  background-size : contain;
-  width: 10px;
-  height: 10px;
-  display: block;
-  position: absolute;
-  margin-left: 10px;
-  margin-top: -11px;
-  right: 11px;
-}
 
 
 .et-call h4, .et-hours h4 {
   font-size: 12px !important;
   color: #fff !important;
   font-family: "Roboto", sans-serif;
+  font-weight : 700;
   text-transform: uppercase;
   padding : 0px !important;
+}
+
+.et-call h4 {
+    text-align : right;
+    border-bottom: 1px solid #fff;
+    padding-bottom: 5px !important;
+    margin-bottom : 5px !important;
 }
 
 .et-hours h4 {
@@ -102,6 +113,10 @@
   }
 }
 
+#logo {
+  margin-top : 9px;
+}
+
   .et-social-icons {
     .et-social-icon {
       .icon {
@@ -112,6 +127,9 @@
     }
   }
 
+#top-menu-nav #top-menu li:hover {
+  border-bottom : 2px solid #F6DF00;
+}
 
 #et-secondary-menu {
   #et-secondary-nav {
@@ -163,9 +181,7 @@
 
   a {}
 
-  #logo {
-    width: 120px; 
-  }
+  
 }
 
 
@@ -180,6 +196,9 @@
 
 #top-menu-nav {
   width: 100%;
+  #top-menu li.mega-menu > ul > li {
+    width : 25% !important; 
+  }
   #top-menu li li {
     margin: 0;
     padding: 20px;
@@ -192,6 +211,25 @@
     li:first-child {
       border-left : 1px solid #495a6b;
     }
+    li:hover:nth-child(1) {
+      border-bottom : 2px solid #001B28;
+    }
+    li:hover:nth-child(2) {
+      border-bottom : 2px solid #80AA37;
+    }
+    li:hover:nth-child(3) {
+      border-bottom : 2px solid #F6DF00;
+    }
+    li:hover:nth-child(4) {
+      border-bottom : 2px solid #001B28;
+    }
+    li:hover:nth-child(5) {
+      border-bottom : 2px solid #80AA37;
+    }
+    li:hover:nth-child(6) {
+      border-bottom : 2px solid #F6DF00;  
+    }
+    
     li {
       padding-right : 0px !important;
       width : 16.5%;

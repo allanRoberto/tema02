@@ -2376,7 +2376,7 @@ function et_divi_customizer_theme_settings( $wp_customize ) {
 	$wp_customize->add_control( 'et_divi[phone_number]', array(
 		'label'		=> esc_html__( 'Phone Number', 'Divi' ),
 		'section'	=> 'et_divi_header_information',
-		'type'      => 'text',
+		'type'      => 'textarea',
 	) );
 
 	$wp_customize->add_setting( 'et_divi[header_email]', array(

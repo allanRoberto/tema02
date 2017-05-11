@@ -1,0 +1,244 @@
+Transfer started at Wed May 10 10:27:34 2017
+PID is 9931
+Log file is LOG_imapsync/2017_05_10_10_27_34_contato@fisioterapeutamariaamelia.com.br.txt ( to change it, use --logfile path ; or use --nolog to turn off logging )
+$RCSfile: imapsync,v $ $Revision: 1.727 $ $Date: 2016/08/19 10:30:36 $ 
+Here is a [darwin] system (Darwin MacBook-Pro-de-Allan.local 15.6.0 Darwin Kernel Version 15.6.0: Mon Jan  9 23:07:29 PST 2017; root:xnu-3248.60.11.2.1~1/RELEASE_X86_64 x86_64)
+with Perl 5.18.2 Mail::IMAPClient 3.38
+Command line used:
+/usr/local/Cellar/imapsync/1.727/libexec/bin/imapsync --host1 66.7.199.235 --user1 contato@fisioterapeutamariaamelia.com.br --password1 MASKED --host2 IMAP16-FARM74.uni5.net --user2 contato@fisioterapeutamariaamelia.com.br --password2 MASKED
+Temp directory is /var/folders/rh/x13dmgjx32bfjgw8xyxc7ktc0000gn/T  ( to change it use --tmpdir dirpath )
+PID file is /var/folders/rh/x13dmgjx32bfjgw8xyxc7ktc0000gn/T/imapsync.pid ( to change it use --pidfile filepath ; to avoid it use --pidfile "" )
+Wrinting my PID 9931 in /var/folders/rh/x13dmgjx32bfjgw8xyxc7ktc0000gn/T/imapsync.pid
+Modules version list:
+Mail::IMAPClient     3.38
+IO::Socket           1.36
+IO::Socket::INET     1.33
+IO::Socket::INET6    2.72
+IO::Socket::SSL      1.966
+Net::SSLeay          1.58
+Compress::Zlib       2.06
+Digest::MD5          2.52
+Digest::HMAC_MD5     1.01
+Digest::HMAC_SHA1    1.03
+Term::ReadKey        2.31
+File::Spec           3.40
+Time::HiRes          1.9725
+Unicode::String      2.10
+IO::Tee              0.64
+File::Copy::Recursive 0.38
+Authen::NTLM         1.09
+URI::Escape          3.31
+Data::Uniqid         0.12
+JSON                 2.90
+JSON::WebToken       0.10
+Crypt::OpenSSL::RSA  0.28
+LWP                  6.05
+HTML::Entities       3.69
+Getopt::Long         2.39
+Test::MockObject     1.20150527
+( use --no-modulesversion to turn off printing this Perl modules list )
+Info: turned ON syncinternaldates, will set the internal dates (arrival dates) on host2 same as host1.
+Host1: will try to use LOGIN authentication on host1
+Host2: will try to use LOGIN authentication on host2
+Host1: imap connexion timeout is 120 seconds
+Host2: imap connexion timeout is 120 seconds
+Host1: IMAP server [66.7.199.235] port [143] user [contato@fisioterapeutamariaamelia.com.br]
+Host2: IMAP server [IMAP16-FARM74.uni5.net] port [143] user [contato@fisioterapeutamariaamelia.com.br]
+Host1: connecting and login on host1 [66.7.199.235] port [143] with user [contato@fisioterapeutamariaamelia.com.br]
+Host1 banner: * OK [CAPABILITY IMAP4rev1 LITERAL+ SASL-IR LOGIN-REFERRALS ID ENABLE IDLE NAMESPACE STARTTLS AUTH=PLAIN AUTH=LOGIN] Dovecot ready.
+Host1: 66.7.199.235 says it has CAPABILITY for AUTHENTICATE LOGIN
+Host1: success login on [66.7.199.235] with user [contato@fisioterapeutamariaamelia.com.br] auth [LOGIN]
+Host2: connecting and login on host2 [IMAP16-FARM74.uni5.net] port [143] with user [contato@fisioterapeutamariaamelia.com.br]
+Host2 banner: * OK [CAPABILITY IMAP4rev1 LITERAL+ SASL-IR LOGIN-REFERRALS ID ENABLE IDLE STARTTLS AUTH=PLAIN AUTH=LOGIN] Dovecot ready.
+Host2: IMAP16-FARM74.uni5.net says it has CAPABILITY for AUTHENTICATE LOGIN
+Host2: success login on [IMAP16-FARM74.uni5.net] with user [contato@fisioterapeutamariaamelia.com.br] auth [LOGIN]
+Host1: state Authenticated
+Host2: state Authenticated
+Host1 capability: IMAP4rev1 LITERAL+ SASL-IR LOGIN-REFERRALS ID ENABLE IDLE SORT SORT=DISPLAY THREAD=REFERENCES THREAD=REFS THREAD=ORDEREDSUBJECT MULTIAPPEND URL-PARTIAL CATENATE UNSELECT CHILDREN NAMESPACE UIDPLUS LIST-EXTENDED I18NLEVEL=1 CONDSTORE QRESYNC ESEARCH ESORT SEARCHRES WITHIN CONTEXT=SEARCH LIST-STATUS BINARY MOVE NAMESPACE NOTIFY SPECIAL-USE COMPRESS=DEFLATE QUOTA
+Host2 capability: IMAP4rev1 LITERAL+ SASL-IR LOGIN-REFERRALS ID ENABLE IDLE SORT SORT=DISPLAY THREAD=REFERENCES THREAD=REFS THREAD=ORDEREDSUBJECT MULTIAPPEND URL-PARTIAL CATENATE UNSELECT CHILDREN NAMESPACE UIDPLUS LIST-EXTENDED I18NLEVEL=1 CONDSTORE QRESYNC ESEARCH ESORT SEARCHRES WITHIN CONTEXT=SEARCH LIST-STATUS BINARY MOVE NOTIFY SPECIAL-USE COMPRESS=DEFLATE QUOTA
+
+Host2: found quota, presented in raw IMAP
+Sending: 4 GETQUOTAROOT INBOX
+Sent 22 bytes
+Read: 	* QUOTAROOT INBOX "User quota"
+  	* QUOTA "User quota" (STORAGE 232476 510976)
+  	4 OK Getquotaroot completed (0.000 + 0.000 secs).
+
+Host2: Quota current storage is 238055424 bytes. Limit is 523239424 bytes. So 45.50 % full
+Host1: found 7 folders.
+Host2: found 8 folders.
+Including all folders found by default. Use --subscribed or --folder or --folderrec or --include to select specific folders. Use --exclude to unselect specific folders.
+Host1: checking all wanted folders exist.
+Host1: checking all wanted folders are selectable. Use --nocheckselectable to avoid this check.
+Host1: guessing separator from folder listing: [.]
+Host1: separator given by NAMESPACE: [.]
+Host2: guessing separator from folder listing: [.]
+Host2: separator given by NAMESPACE: [.]
+Host1: guessing prefix from folder listing: [INBOX.]
+Host1: prefix given by NAMESPACE: [INBOX.]
+Host2: guessing prefix from folder listing: [INBOX.]
+Host2: prefix given by NAMESPACE: [INBOX.]
+Host1 separator and prefix: [.][INBOX.]
+Host2 separator and prefix: [.][INBOX.]
+Turned off automapping folders ( use --automap to turn on automapping )
+
+++++ Listing folders
+All foldernames are presented between brackets like [X] where X is the foldername.
+When a foldername contains non-ASCII characters it is presented in the form
+[X] = [Y] where
+X is the imap foldername you have to use in command line options and
+Y is the uft8 output just printed for convenience, to recognize it.
+
+Host1 folders list:
+[INBOX]
+[INBOX.Archive]
+[INBOX.Drafts]
+[INBOX.Junk]
+[INBOX.Sent]
+[INBOX.Trash]
+[INBOX.spam]
+
+Host2 folders list:
+[INBOX]
+[INBOX.Archive]
+[INBOX.Drafts]
+[INBOX.Junk]
+[INBOX.Sent]
+[INBOX.Spam]
+[INBOX.Trash]
+[INBOX.spam]
+
+Folders in host2 not in host1:
+[INBOX.Spam]
+
+Folders mapping from --automap feature (use --f1f2 to override any mapping):
+
+Folders mapping from --f1f2 options, it overrides --automap:
+
+
+Folders sizes before the synchronization.
+You can remove foldersizes listings by using "--nofoldersizes" and  "--nofoldersizesatend"
+but then you will also loose the ETA (Estimation Time of Arrival) given after each message copy.
+++++ Calculating sizes of 7 folders on Host1
+Host1 folder     1/7 [INBOX]                             Size: 241210421 Messages:   542 Biggest:  30831461
+Host1 folder     2/7 [INBOX.Archive]                     Size:         0 Messages:     0 Biggest:         0
+Host1 folder     3/7 [INBOX.Drafts]                      Size:         0 Messages:     0 Biggest:         0
+Host1 folder     4/7 [INBOX.Junk]                        Size:         0 Messages:     0 Biggest:         0
+Host1 folder     5/7 [INBOX.Sent]                        Size:         0 Messages:     0 Biggest:         0
+Host1 folder     6/7 [INBOX.Trash]                       Size:         0 Messages:     0 Biggest:         0
+Host1 folder     7/7 [INBOX.spam]                        Size:         0 Messages:     0 Biggest:         0
+Host1 Nb folders:                7 folders
+Host1 Nb messages:             542 messages
+Host1 Total size:        241210421 bytes (230.036 MiB)
+Host1 Biggest message:    30831461 bytes (29.403 MiB)
+Host1 Time spent:             11.9 seconds
+++++ Calculating sizes of 7 folders on Host2
+Host2 folder     1/7 [INBOX]                             Size: 241210421 Messages:   542 Biggest:  30831461
+Host2 folder     2/7 [INBOX.Archive]                     Size:         0 Messages:     0 Biggest:         0
+Host2 folder     3/7 [INBOX.Drafts]                      Size:         0 Messages:     0 Biggest:         0
+Host2 folder     4/7 [INBOX.Junk]                        Size:         0 Messages:     0 Biggest:         0
+Host2 folder     5/7 [INBOX.Sent]                        Size:         0 Messages:     0 Biggest:         0
+Host2 folder     6/7 [INBOX.Trash]                       Size:         0 Messages:     0 Biggest:         0
+Host2 folder     7/7 [INBOX.spam]                        Size:         0 Messages:     0 Biggest:         0
+Host2 Nb folders:                7 folders
+Host2 Nb messages:             542 messages
+Host2 Total size:        241210421 bytes (230.036 MiB)
+Host2 Biggest message:    30831461 bytes (29.403 MiB)
+Host2 Time spent:              0.9 seconds
+++++ Looping on each one of 7 folders to sync
+Folder     1/7 [INBOX]                             -> [INBOX]                            
+Host1 folder [INBOX] has 542 messages in total (mentioned by SELECT)
+Host2 folder [INBOX] has 542 messages in total (mentioned by SELECT)
+Host1 folder [INBOX] considering 542 messages
+Host2 folder [INBOX] considering 542 messages
+Folder     2/7 [INBOX.Archive]                     -> [INBOX.Archive]                    
+Host1 folder [INBOX.Archive] has 0 messages in total (mentioned by SELECT)
+Host2 folder [INBOX.Archive] has 0 messages in total (mentioned by SELECT)
+Host1 folder [INBOX.Archive] considering 0 messages
+Host2 folder [INBOX.Archive] considering 0 messages
+Folder     3/7 [INBOX.Drafts]                      -> [INBOX.Drafts]                     
+Host1 folder [INBOX.Drafts] has 0 messages in total (mentioned by SELECT)
+Host2 folder [INBOX.Drafts] has 0 messages in total (mentioned by SELECT)
+Host1 folder [INBOX.Drafts] considering 0 messages
+Host2 folder [INBOX.Drafts] considering 0 messages
+Folder     4/7 [INBOX.Junk]                        -> [INBOX.Junk]                       
+Host1 folder [INBOX.Junk] has 0 messages in total (mentioned by SELECT)
+Host2 folder [INBOX.Junk] has 0 messages in total (mentioned by SELECT)
+Host1 folder [INBOX.Junk] considering 0 messages
+Host2 folder [INBOX.Junk] considering 0 messages
+Folder     5/7 [INBOX.Sent]                        -> [INBOX.Sent]                       
+Host1 folder [INBOX.Sent] has 0 messages in total (mentioned by SELECT)
+Host2 folder [INBOX.Sent] has 0 messages in total (mentioned by SELECT)
+Host1 folder [INBOX.Sent] considering 0 messages
+Host2 folder [INBOX.Sent] considering 0 messages
+Folder     6/7 [INBOX.Trash]                       -> [INBOX.Trash]                      
+Host1 folder [INBOX.Trash] has 0 messages in total (mentioned by SELECT)
+Host2 folder [INBOX.Trash] has 0 messages in total (mentioned by SELECT)
+Host1 folder [INBOX.Trash] considering 0 messages
+Host2 folder [INBOX.Trash] considering 0 messages
+Folder     7/7 [INBOX.spam]                        -> [INBOX.spam]                       
+Host1 folder [INBOX.spam] has 0 messages in total (mentioned by SELECT)
+Host2 folder [INBOX.spam] has 0 messages in total (mentioned by SELECT)
+Host1 folder [INBOX.spam] considering 0 messages
+Host2 folder [INBOX.spam] considering 0 messages
+++++ End looping on each folder
+
+Folders sizes after the synchronization.
+You can remove this foldersizes listing by using  "--nofoldersizesatend"
+++++ Calculating sizes of 7 folders on Host1
+Host1 folder     1/7 [INBOX]                             Size: 241210421 Messages:   542 Biggest:  30831461
+Host1 folder     2/7 [INBOX.Archive]                     Size:         0 Messages:     0 Biggest:         0
+Host1 folder     3/7 [INBOX.Drafts]                      Size:         0 Messages:     0 Biggest:         0
+Host1 folder     4/7 [INBOX.Junk]                        Size:         0 Messages:     0 Biggest:         0
+Host1 folder     5/7 [INBOX.Sent]                        Size:         0 Messages:     0 Biggest:         0
+Host1 folder     6/7 [INBOX.Trash]                       Size:         0 Messages:     0 Biggest:         0
+Host1 folder     7/7 [INBOX.spam]                        Size:         0 Messages:     0 Biggest:         0
+Host1 Nb folders:                7 folders
+Host1 Nb messages:             542 messages
+Host1 Total size:        241210421 bytes (230.036 MiB)
+Host1 Biggest message:    30831461 bytes (29.403 MiB)
+Host1 Time spent:              3.3 seconds
+++++ Calculating sizes of 7 folders on Host2
+Host2 folder     1/7 [INBOX]                             Size: 241210421 Messages:   542 Biggest:  30831461
+Host2 folder     2/7 [INBOX.Archive]                     Size:         0 Messages:     0 Biggest:         0
+Host2 folder     3/7 [INBOX.Drafts]                      Size:         0 Messages:     0 Biggest:         0
+Host2 folder     4/7 [INBOX.Junk]                        Size:         0 Messages:     0 Biggest:         0
+Host2 folder     5/7 [INBOX.Sent]                        Size:         0 Messages:     0 Biggest:         0
+Host2 folder     6/7 [INBOX.Trash]                       Size:         0 Messages:     0 Biggest:         0
+Host2 folder     7/7 [INBOX.spam]                        Size:         0 Messages:     0 Biggest:         0
+Host2 Nb folders:                7 folders
+Host2 Nb messages:             542 messages
+Host2 Total size:        241210421 bytes (230.036 MiB)
+Host2 Biggest message:    30831461 bytes (29.403 MiB)
+Host2 Time spent:              1.3 seconds
+++++ Statistics
+Transfer started on               : Wed May 10 10:27:34 2017
+Transfer ended on                 : Wed May 10 10:27:58 2017
+Transfer time                     : 24.7 sec
+Folders synced                    : 7/7 synced
+Messages transferred              : 0 
+Messages skipped                  : 542
+Messages found duplicate on host1 : 0
+Messages found duplicate on host2 : 0
+Messages void (noheader) on host1 : 0
+Messages void (noheader) on host2 : 0
+Messages deleted on host1         : 0
+Messages deleted on host2         : 0
+Total bytes transferred           : 0 (0.000 KiB)
+Total bytes duplicate host1       : 0 (0.000 KiB)
+Total bytes duplicate host2       : 0 (0.000 KiB)
+Total bytes skipped               : 241210421 (230.036 MiB)
+Total bytes error                 : 0 (0.000 KiB)
+Message rate                      : 0.0 messages/s
+Average bandwidth rate            : 0.0 KiB/s
+Memory consumption                : 2549.0 MiB
+Biggest message                   : 0 bytes (0.000 KiB)
+Memory/biggest message ratio      : NA
+Start difference host2 - host1    : 0 messages, 0 bytes (0.000 KiB)
+Final difference host2 - host1    : 0 messages, 0 bytes (0.000 KiB)
+Detected 0 errors
+
+This imapsync is up to date
+Homepage: http://imapsync.lamiral.info/
+Exiting with return value 0
+Log file is LOG_imapsync/2017_05_10_10_27_34_contato@fisioterapeutamariaamelia.com.br.txt ( to change it, use --logfile filepath ; or use --nolog to turn off logging )

@@ -118,9 +118,9 @@ namespace :db do
       run "cd #{deploy_to}/current/webroot && #{wp} db export #{temp} && cd -"
       download("#{temp}", "db/#{filename}", :via=> :scp)
       if "#{stage}" == "prod"
-        search = "demo.solucoesparacorretores.com.br" #FIXME
+        search = "antarticoseguros.com.br" #FIXME
       else
-        search = "demo.solucoesparacorretores.com.br" #FIXME
+        search = "antarticoseguros.com.br" #FIXME
       end
       replace = local_domain
       puts "searching (#{search}) and replacing (#{replace}) domain information"
@@ -144,9 +144,9 @@ namespace :db do
       temp = "/tmp/#{release_name}_#{application}_#{filename}"
       run "touch #{temp} && chmod 600 #{temp}"
       if "#{stage}" == "prod"
-        replace = "demo.solucoesparacorretores.com.br" #FIXME
+        replace = "antarticoseguros.com.br" #FIXME
       else
-        replace = "demo.solucoesparacorretores.com.br" #FIXME
+        replace = "antarticoseguros.com.br" #FIXME
       end
       search = local_domain
       puts "searching (#{search}) and replacing (#{replace}) domain information"

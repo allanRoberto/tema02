@@ -199,23 +199,34 @@
 				</div>
 				<?php if ( $et_contact_info_defined ) : ?>
 				<div class="et-call">
-					<h4>Fale conosco</h4>
+					<h4><strong>Fale conosco</strong></h4>
+					<p><?php echo et_sanitize_html_input_text( $et_phone_number ); ?></p>
 				</div>
 				<div class="et-hours">
 					<h4>Horário de atendimento</h4>
-					<p>Seg. a Sex. 9:00 às 18:00 <br>(Horário de Brasília)</p>
+					<p>Seg. a Sex. 9:00 às 17:00 - (Horário de Brasília)</p>
+					<h4>E-mail</h4>
+					<p><a href="<?php echo esc_attr( 'mailto:' . $et_email ); ?>"><?php echo esc_html( $et_email ); ?></a></p>
 				</div>
 				<div id="et-info">
+				<?php if ( $et_contact_info_defined ) : ?>
+
+				<div id="et-info">
 				<?php if ( '' !== ( $et_phone_number = et_get_option( 'phone_number' ) ) ) : ?>
-					<h4>Tel.:</h4>
 					<span id="et-info-phone"><?php echo et_sanitize_html_input_text( $et_phone_number ); ?></span>
 				<?php endif; ?>
 
 				<?php if ( '' !== ( $et_email = et_get_option( 'header_email' ) ) ) : ?>
-					<h4>E-mail:</h4>
 					<a href="<?php echo esc_attr( 'mailto:' . $et_email ); ?>"><span id="et-info-email"><?php echo esc_html( $et_email ); ?></span></a>
 				<?php endif; ?>
 
+				<?php
+				if ( true === $show_header_social_icons ) {
+					get_template_part( 'includes/social_icons', 'header' );
+				} ?>
+				</div> <!-- #et-info -->
+
+			<?php endif; // true === $et_contact_info_defined ?>
 				<?php
 				if ( true === $show_header_social_icons ) {
 					get_template_part( 'includes/social_icons', 'header' );

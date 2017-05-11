@@ -205,6 +205,10 @@ input[type=text], input[type=password], input[type=tel], input[type=email], inpu
     margin-bottom: 10px !important;
 }
 
+.input-mini input[type="text"]{
+    width: 33.3%;
+}
+
 .datepicker {
 	width:25% !important;
 }
@@ -538,3 +542,64 @@ $text-color : #fff;
 .form-auto .gf_step{
 width: calc(100% * 1/4); 
 }
+
+
+.form_saved_message h1 {
+    text-transform: uppercase;
+    text-align: center;
+    font-weight: 900;
+    padding-bottom: 10px;
+}
+
+.form_saved_message p {
+    text-align : center;
+    padding-bottom : 0px;
+}
+
+.form_saved_message_emailform {
+    width : 60%;
+    margin : auto;
+}
+div.form_saved_message_emailform form input[type="text"] {
+    width: 78%;
+    height : 24px !important;
+}
+div.form_saved_message_emailform form input[type="submit"] {
+    text-transform: uppercase !important;
+    font-family: "Roboto", sans-serif !important;
+    font-weight: 900 !important;
+    color: #fff !important;
+    background: #2c3e50 !important;
+    font-size: 12px !important;
+    border: 0px !important;
+    float: right !important;
+    width: 20% !important;
+    margin-top : 0px !important;
+    top : -1px;
+    position : relative;
+}
+
+ .ui-autocomplete {
+    max-height: 190px;
+    overflow-y: auto;
+    /* prevent horizontal scrollbar */
+    overflow-x: hidden;
+  }
+  /* IE 6 doesn't support max-height
+   * we use height instead, but this forces the menu to always be this tall
+   */
+  * html .ui-autocomplete {
+    height: 100px;
+  }
+
+ .ui-autocomplete-loading {
+    background : url('img/loading.gif') right top no-repeat;
+    background-size : contain;
+  }
+
+  .input-address textarea {
+    background: transparent;
+    padding-top: 0px;
+    height: 35px;
+    width: 100%;
+  }
