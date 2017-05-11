@@ -9,6 +9,7 @@ db/
 docs/
 backups/
 webroot/
+Slices/
 wordpress/.htaccess
 wordpress/wp-content/themes/*/compass_app_log.txt
 wordpress/wp-content/uploads
